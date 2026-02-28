@@ -2,6 +2,8 @@
 
 import { Command } from 'commander';
 import { authCommand, whoamiCommand, logoutCommand } from './commands/auth';
+import { portfolioCommand } from './commands/portfolio';
+import { portfolioChartCommand } from './commands/portfolio-chart';
 
 const pkg = require('../package.json');
 
@@ -28,6 +30,29 @@ program
   .option('-v, --verbose', 'Show detailed profile information')
   .action(async (options) => {
     await whoamiCommand(options.verbose);
+  });
+
+// Portfolio command
+program
+  .command('portfolio')
+  .description('Display portfolio information')
+  .option('--json', 'Output as JSON')
+  .option('--toon', 'Output as toon encoded format')
+  .option('--markdown', 'Output as markdown')
+  .action(async (options) => {
+    await portfolioCommand(options);
+  });
+
+// Portfolio trend command
+program
+  .command('portfolio-trend')
+  .description('Display portfolio trend chart')
+  .argument('[period]', 'Time period: 1M, 3M, 6M, 1y, Max (default: 1M)', '1M')
+  .option('--json', 'Output as JSON')
+  .option('--toon', 'Output as toon encoded format')
+  .option('--markdown', 'Output as markdown')
+  .action(async (period, options) => {
+    await portfolioChartCommand(period, options);
   });
 
 // Logout command
