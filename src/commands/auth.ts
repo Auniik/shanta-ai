@@ -2,8 +2,22 @@ import * as readline from 'readline';
 import { ConfigManager } from '../config';
 import { AuthService } from '../services/authService';
 import { printProfile } from '../views/profile';
+import { jwtDecode } from 'jwt-decode';
+import { authenticatedApiCall } from '../utils/apiWrapper';
 
-export async function authCommand(apiKey?: string): Promise<void> {
+function decodeTokenExpiry(token: string): number | null {
+  try {
+    const decoded: any = jwtDecode(token);
+    if (decoded.exp) {
+      return decoded.exp * 1000; // Convert to milliseconds
+    }
+  } catch (error) {
+    console.error('Warning: Failed to decode token expiry');
+  }
+  return null;
+}
+
+export async function authCommand(apiKey?: string, options?: { username?: string; password?: string }): Promise<void> {
   const config = new ConfigManager();
 
   if (apiKey) {
@@ -17,8 +31,8 @@ export async function authCommand(apiKey?: string): Promise<void> {
   // Use API-based authentication
   console.log('🔐 Starting authentication...\n');
   
-  const accountCode = await promptForInput('Enter your account code: ');
-  const password = await promptForPassword('Enter your password: ');
+  const accountCode = options?.username || await promptForInput('Enter your account code: ');
+  const password = options?.password || await promptForPassword('Enter your password: ');
 
   if (!accountCode || !password) {
     console.error('Error: Account code and password are required');
@@ -29,10 +43,16 @@ export async function authCommand(apiKey?: string): Promise<void> {
     const authService = new AuthService();
     const result = await authService.login({ accountCode, password });
 
-    // Save the tokens
+    // Decode JWT to get expiry time
+    const expiresAt = decodeTokenExpiry(result.accessToken);
+
+    // Save the tokens and expiry
     config.set('apiKey', result.accessToken);
     if (result.refreshToken) {
       config.set('refreshToken', result.refreshToken);
+    }
+    if (expiresAt) {
+      config.set('expiresAt', String(expiresAt));
     }
     config.set('userId', accountCode);
 
@@ -45,24 +65,14 @@ export async function authCommand(apiKey?: string): Promise<void> {
 }
 
 export async function whoamiCommand(verbose: boolean = false): Promise<void> {
-  const config = new ConfigManager();
-
-  if (!config.isAuthenticated()) {
-    console.error('Error: Not authenticated. Please run "shanta-ai auth" first.');
-    process.exit(1);
-  }
-
-  const token = config.get('apiKey');
-  if (!token) {
-    console.error('Error: No token found. Please run "shanta-ai auth" first.');
-    process.exit(1);
-  }
-
   try {
     console.log('🔍 Fetching profile information...\n');
     
     const authService = new AuthService();
-    const profile = await authService.getUserProfile(token);
+    
+    const profile = await authenticatedApiCall((token: string) => 
+      authService.getUserProfile(token)
+    );
 
     printProfile(profile, verbose);
 

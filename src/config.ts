@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as os from 'os';
+import { jwtDecode } from 'jwt-decode';
 
 export interface Config {
   apiKey?: string;
@@ -8,6 +9,7 @@ export interface Config {
   apiUrl?: string;
   userId?: string;
   email?: string;
+  expiresAt?: number;
 }
 
 export class ConfigManager {
@@ -47,14 +49,14 @@ export class ConfigManager {
     }
   }
 
-  public get(key: keyof Config): string | undefined {
+  public get(key: keyof Config): string | number | undefined {
     const config = this.load();
     return config[key];
   }
 
-  public set(key: keyof Config, value: string): void {
+  public set(key: keyof Config, value: string | number): void {
     const config = this.load();
-    config[key] = value;
+    config[key] = value as any;
     this.save(config);
   }
 
@@ -66,6 +68,69 @@ export class ConfigManager {
 
   public isAuthenticated(): boolean {
     const config = this.load();
-    return !!config.apiKey;
+    if (!config.apiKey) {
+      return false;
+    }
+    
+    // Check if token is expired
+    if (config.expiresAt && config.expiresAt < Date.now()) {
+      return false;
+    }
+    
+    return true;
+  }
+
+  public async ensureAuthenticated(forceRefresh: boolean = false): Promise<string> {
+    if (!forceRefresh && this.isAuthenticated()) {
+      const token = this.get('apiKey');
+      if (token && typeof token === 'string') {
+        return token;
+      }
+    }
+
+    // Try auto-refresh with saved credentials
+    const config = this.load();
+    const username = config.userId;
+    const password = process.env.SHANTA_AI_PASSWORD;
+
+    if (!username || !password) {
+      throw new Error('Not authenticated. Please run "shanta-ai auth" first or set SHANTA_AI_PASSWORD environment variable.');
+    }
+
+    // Re-authenticate silently
+    const { AuthService } = await import('./services/authService');
+    const authService = new AuthService();
+    
+    try {
+      const result = await authService.login({ accountCode: username, password }, true);
+      
+      // Decode JWT to get expiry time
+      const expiresAt = this.decodeTokenExpiry(result.accessToken);
+      
+      // Save new tokens
+      this.set('apiKey', result.accessToken);
+      if (result.refreshToken) {
+        this.set('refreshToken', result.refreshToken);
+      }
+      if (expiresAt) {
+        this.set('expiresAt', expiresAt);
+      }
+      
+      return result.accessToken;
+    } catch (error) {
+      throw new Error('Auto-refresh failed. Please run "shanta-ai auth" again.');
+    }
+  }
+
+  private decodeTokenExpiry(token: string): number | null {
+    try {
+      const decoded: any = jwtDecode(token);
+      if (decoded.exp) {
+        return decoded.exp * 1000; // Convert to milliseconds
+      }
+    } catch (error) {
+      // Silent fail
+    }
+    return null;
   }
 }

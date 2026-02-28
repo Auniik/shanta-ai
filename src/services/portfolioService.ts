@@ -30,8 +30,11 @@ export class PortfolioService {
       return response.data.data;
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
+        const statusCode = error.response?.status;
         const message = error.response?.data?.message || error.message;
-        throw new Error(`Failed to fetch portfolio: ${message}`);
+        const err: any = new Error(`Failed to fetch portfolio: ${message}`);
+        err.statusCode = statusCode;
+        throw err;
       }
       throw error;
     }
@@ -46,8 +49,11 @@ export class PortfolioService {
       return response.data.data;
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
+        const statusCode = error.response?.status;
         const message = error.response?.data?.message || error.message;
-        throw new Error(`Failed to fetch portfolio chart: ${message}`);
+        const err: any = new Error(`Failed to fetch portfolio chart: ${message}`);
+        err.statusCode = statusCode;
+        throw err;
       }
       throw error;
     }

@@ -19,8 +19,10 @@ program
   .command('auth')
   .description('Authenticate with your API key')
   .argument('[apiKey]', 'API key (optional, will prompt if not provided)')
-  .action(async (apiKey) => {
-    await authCommand(apiKey);
+  .option('-u, --username <username>', 'Account code')
+  .option('-p, --password <password>', 'Password')
+  .action(async (apiKey, options) => {
+    await authCommand(apiKey, options);
   });
 
 // Whoami command

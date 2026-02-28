@@ -2,6 +2,7 @@ import { ConfigManager } from '../config';
 import { PortfolioService } from '../services/portfolioService';
 import { encode as toonEncode } from '@toon-format/toon';
 import { printDefaultChart, printMarkdownChart } from '../views/chart';
+import { authenticatedApiCall } from '../utils/apiWrapper';
 
 type TimePeriod = '1M' | '3M' | '6M' | '1y' | 'Max';
 
@@ -9,19 +10,6 @@ export async function portfolioChartCommand(
   period: string = '1M',
   options: { json?: boolean; toon?: boolean; markdown?: boolean }
 ): Promise<void> {
-  const config = new ConfigManager();
-
-  if (!config.isAuthenticated()) {
-    console.error('Error: Not authenticated. Please run "shanta-ai auth" first.');
-    process.exit(1);
-  }
-
-  const token = config.get('apiKey');
-  if (!token) {
-    console.error('Error: No token found. Please run "shanta-ai auth" first.');
-    process.exit(1);
-  }
-
   // Validate period
   const validPeriods: TimePeriod[] = ['1M', '3M', '6M', '1y', 'Max'];
   if (!validPeriods.includes(period as TimePeriod)) {
@@ -33,7 +21,10 @@ export async function portfolioChartCommand(
     console.log(`📊 Fetching portfolio trend (${period})...\n`);
     
     const portfolioService = new PortfolioService();
-    const chartData = await portfolioService.getPortfolioChart(token, period as TimePeriod);
+    
+    const chartData = await authenticatedApiCall((token: string) => 
+      portfolioService.getPortfolioChart(token, period as TimePeriod)
+    );
 
     if (options.json) {
       console.log(JSON.stringify(chartData, null, 2));

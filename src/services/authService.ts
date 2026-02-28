@@ -42,9 +42,11 @@ export class AuthService {
     };
   }
 
-  async login(credentials: LoginCredentials): Promise<AuthResult> {
+  async login(credentials: LoginCredentials, silent: boolean = false): Promise<AuthResult> {
     try {
-      console.log('🔐 Authenticating...');
+      if (!silent) {
+        console.log('🔐 Authenticating...');
+      }
       const response = await axios.post<LoginResponse>(
         `${this.apiUrl}/api/auth/login`,
         {
@@ -63,7 +65,9 @@ export class AuthService {
         throw new Error('No token found in response');
       }
 
-      console.log('✅ Authentication successful!');
+      if (!silent) {
+        console.log('✅ Authentication successful!');
+      }
       return {
         accessToken,
         refreshToken,
@@ -89,8 +93,11 @@ export class AuthService {
       return response.data.data;
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
+        const statusCode = error.response?.status;
         const message = error.response?.data?.message || error.message;
-        throw new Error(`Failed to fetch profile: ${message}`);
+        const err: any = new Error(`Failed to fetch profile: ${message}`);
+        err.statusCode = statusCode;
+        throw err;
       }
       throw error;
     }
