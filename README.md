@@ -78,15 +78,6 @@ shanta-ai --help
 shanta-ai --version
 ```
 
-## Programmatic Usage
-
-```typescript
-import { ShantaAI } from 'shanta-ai';
-
-const ai = new ShantaAI();
-// Your code here
-```
-
 ## Development
 
 ```bash
