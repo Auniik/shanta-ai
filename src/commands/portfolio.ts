@@ -3,16 +3,18 @@ import { PortfolioService } from '../services/portfolioService';
 import { encode as toonEncode } from '@toon-format/toon';
 import { printDefaultPortfolio, printMarkdownPortfolio } from '../views/portfolio';
 import { authenticatedApiCall } from '../utils/apiWrapper';
+import ora from 'ora';
 
 export async function portfolioCommand(options: { json?: boolean; toon?: boolean; markdown?: boolean }): Promise<void> {
+  const spinner = ora('Fetching portfolio...').start();
   try {
-    console.log('📊 Fetching portfolio...\n');
-    
     const portfolioService = new PortfolioService();
     
     const portfolio = await authenticatedApiCall((token: string) => 
       portfolioService.getPortfolio(token)
     );
+
+    spinner.stop();
 
     if (options.json) {
       console.log(JSON.stringify(portfolio, null, 2));

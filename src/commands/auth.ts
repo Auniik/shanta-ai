@@ -4,6 +4,7 @@ import { AuthService } from '../services/authService';
 import { printProfile } from '../views/profile';
 import { jwtDecode } from 'jwt-decode';
 import { authenticatedApiCall } from '../utils/apiWrapper';
+import ora from 'ora';
 
 function decodeTokenExpiry(token: string): number | null {
   try {
@@ -65,14 +66,15 @@ export async function authCommand(apiKey?: string, options?: { username?: string
 }
 
 export async function whoamiCommand(verbose: boolean = false): Promise<void> {
+  const spinner = ora('Fetching profile information...').start();
   try {
-    console.log('🔍 Fetching profile information...\n');
-    
     const authService = new AuthService();
     
     const profile = await authenticatedApiCall((token: string) => 
       authService.getUserProfile(token)
     );
+
+    spinner.stop();
 
     printProfile(profile, verbose);
 
