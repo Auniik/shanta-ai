@@ -1,0 +1,731 @@
+{
+  "capturedAt": "2026-06-24T04:39:31.400Z",
+  "targetUrl": "https://easytrade.shantasecurities.com",
+  "baseUrls": [
+    "https://easytrade.shantasecurities.com",
+    "https://fonts.googleapis.com",
+    "http://127.0.0.1:8888"
+  ],
+  "authHeadersFound": [],
+  "summary": {
+    "totalRequests": 44,
+    "byCategory": {
+      "OTHER": 13,
+      "MARKET": 1
+    }
+  },
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/mob/price",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=&SID=&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=306&SRC=DSE&MOD=WL%3A0%2CSRC%3A0",
+      "category": "MARKET",
+      "sampleBody": null,
+      "status": 200,
+      "responseShape": {
+        "RT": "string",
+        "HED": {
+          "VRS": "string",
+          "TD": "string",
+          "WLD": "string",
+          "WLTD": "string",
+          "ID": "string"
+        },
+        "DAT": {
+          "VRS": [
+            "string"
+          ],
+          "TD": [
+            "string"
+          ],
+          "WLD": [
+            "string"
+          ],
+          "WLTD": [],
+          "ID": [
+            "string"
+          ]
+        },
+        "STAT": {
+          "TD": "string",
+          "VRS": "string",
+          "ID": "string",
+          "WLTD": "string",
+          "WLD": "string"
+        }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/",
+      "url": "https://easytrade.shantasecurities.com/",
+      "category": "OTHER",
+      "sampleBody": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/TSPD/",
+      "url": "https://easytrade.shantasecurities.com/TSPD/?type=18",
+      "category": "OTHER",
+      "sampleBody": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/TSPD/0857998ccbab2000982ec1154a7930d23f622aab247c6168815377ecdef630a0c966f71641d760bc",
+      "url": "https://easytrade.shantasecurities.com/TSPD/0857998ccbab2000982ec1154a7930d23f622aab247c6168815377ecdef630a0c966f71641d760bc?type=17",
+      "category": "OTHER",
+      "sampleBody": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/css",
+      "url": "https://fonts.googleapis.com/css?family=Arimo:400,700",
+      "category": "OTHER",
+      "sampleBody": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/mob/assets/fonts/AvenirLTStd-Roman.otf",
+      "url": "https://easytrade.shantasecurities.com/mob/assets/fonts/AvenirLTStd-Roman.otf",
+      "category": "OTHER",
+      "sampleBody": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/TSPD/0857998ccbab280060530f33fcb4ea013c7a4a12d09b4db31cef4690387f0013535f49b378f124e4a6582bcd56555d9e",
+      "url": "https://easytrade.shantasecurities.com/TSPD/0857998ccbab280060530f33fcb4ea013c7a4a12d09b4db31cef4690387f0013535f49b378f124e4a6582bcd56555d9e?type=13",
+      "category": "OTHER",
+      "sampleBody": null,
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/404",
+      "url": "http://127.0.0.1:8888/404",
+      "category": "OTHER",
+      "sampleBody": null
+    },
+    {
+      "method": "GET",
+      "path": "/random_url",
+      "url": "http://127.0.0.1:8888/random_url",
+      "category": "OTHER",
+      "sampleBody": null
+    },
+    {
+      "method": "GET",
+      "path": "/400_random_url_with_numbers_403",
+      "url": "http://127.0.0.1:8888/400_random_url_with_numbers_403",
+      "category": "OTHER",
+      "sampleBody": null
+    },
+    {
+      "method": "GET",
+      "path": "/200",
+      "url": "http://127.0.0.1:8888/200",
+      "category": "OTHER",
+      "sampleBody": null
+    },
+    {
+      "method": "GET",
+      "path": "/403",
+      "url": "http://127.0.0.1:8888/403",
+      "category": "OTHER",
+      "sampleBody": null
+    },
+    {
+      "method": "GET",
+      "path": "/302",
+      "url": "http://127.0.0.1:8888/302",
+      "category": "OTHER",
+      "sampleBody": null
+    },
+    {
+      "method": "GET",
+      "path": "/mob/chart",
+      "url": "https://easytrade.shantasecurities.com/mob/chart?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=37&E=DSE&S=DSEX&AE=1&CM=2&NOD=1&CT=3",
+      "category": "OTHER",
+      "sampleBody": null,
+      "status": 200
+    }
+  ],
+  "allRequests": [
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": null
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:46.341Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/TSPD/?type=18",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:46.530Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/TSPD/0857998ccbab2000982ec1154a7930d23f622aab247c6168815377ecdef630a0c966f71641d760bc?type=17",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:46.530Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://fonts.googleapis.com/css?family=Arimo:400,700",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:46.530Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/assets/fonts/AvenirLTStd-Roman.otf",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": "https://easytrade.shantasecurities.com",
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:47.059Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/TSPD/?type=20",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:47.242Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/TSPD/0857998ccbab2000982ec1154a7930d23f622aab247c6168815377ecdef630a0c966f71641d760bc?type=11",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/TSPD/?type=20"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:47.352Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/TSPD/0857998ccbab2000982ec1154a7930d23f622aab247c6168815377ecdef630a0c966f71641d760bc?type=12",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/TSPD/?type=20"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:47.352Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/TSPD/?type=22",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:50.359Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/TSPD/0857998ccbab280060530f33fcb4ea013c7a4a12d09b4db31cef4690387f0013535f49b378f124e4a6582bcd56555d9e?type=13",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/TSPD/?type=20"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:51.118Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=&SID=&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=306&SRC=DSE&MOD=WL%3A0%2CSRC%3A0",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:51.161Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=&SID=&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=303&SRC=DSE&AS=1&VRS=0",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:51.162Z"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8888/404",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": null
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:51.303Z"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8888/random_url",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": null
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:51.304Z"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8888/400_random_url_with_numbers_403",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": null
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:51.304Z"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8888/200",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": null
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:51.304Z"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8888/403",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": null
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:51.304Z"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8888/302",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": null
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:51.304Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/TSPD/0857998ccbab280060530f33fcb4ea013c7a4a12d09b4db31cef4690387f0013535f49b378f124e4a6582bcd56555d9e?type=14",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": null,
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/TSPD/?type=20"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:36:52.779Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=308&SRC=XCHG%2CDSE",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:37:23.149Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=306&SRC=DSE&MOD=WL%3A10867%2CSRC%3A8895",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:37:23.149Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=303&SRC=DSE&AS=1&VRS=10867",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:37:23.150Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/chart?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=37&E=DSE&S=DSEX&AE=1&CM=2&NOD=1&CT=3",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:37:23.150Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=52&E=DSE&S=DSE~2~1JANATAMF%60BL&AE=1&AS=0",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:37:23.386Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=0&UE=DSE&H=1&M=1&RT=52&S=DSE~2~1JANATAMF%60PB%2CDSE~0~CITYBANK%60PB%2CDSE~0~DOMINAGE%60PB%2CDSE~0~UCB%60PB%2CDSE~0~SQURPHARMA%60PB%2CDSE~0~CVOPRL%60PB%2CDSE~0~RENATA%60PB%2CDSE~0~NAVANAPHAR%60PB%2CDSE~0~APEXSPINN%60PB%2CDSE~0~MIDLANDBNK%60PB%2CDSE~0~BRACBANK%60PB%2CDSE~0~BATBC%60PB%2CDSE~0~BXPHARMA%60PB%2CDSE~0~MHSML%60PB&AE=1&AS=0",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:37:24.152Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=301",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:37:25.205Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=0&UE=DSE&H=1&M=1&RT=52&S=DSE~0~BRACBANK%60PB%2CDSE~0~SQURPHARMA%60PB%2CDSE~0~CITYBANK%60PB%2CDSE~0~BXPHARMA%60PB&AE=1&AS=0",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:03.237Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/chart?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=37&E=DSE&S=DSEX&AE=1&CM=2&NOD=1&CT=3",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:18.296Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=306&SRC=DSE&MOD=WL%3A10867%2CSRC%3A8895",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:21.588Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=303&SRC=DSE&AS=1&VRS=10867",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:21.589Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=306&SRC=DSE&MOD=WL%3A10867%2CSRC%3A8895",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:21.589Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=303&SRC=DSE&AS=1&VRS=10867",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:21.589Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=0&UE=DSE&H=1&M=1&RT=52&S=DSE~2~1JANATAMF%60BY%2CDSE~2~1STPRIMFMF%60BY%2CDSE~0~AAMRANET%60BY%2CDSE~0~AAMRATECH%60BY%2CDSE~2~ABB1STMF%60BY%2CDSE~0~ABBANK%60BY%2CDSE~79~ABBLPBOND%60BY%2CDSE~0~ACFL%60BY%2CDSE~0~ACHIASF%60BY%2CDSE~0~ACIFORMULA%60BY%2CDSE~0~ACI%60BY%2CDSE~0~ACMELAB%60BY%2CDSE~0~ACMEPL%60BY%2CDSE~0~ACTIVEFINE%60BY%2CDSE~0~ADNTEL%60BY%2CDSE~0~ADVENT%60BY%2CDSE~0~AFCAGRO%60BY%2CDSE~0~AFTABAUTO%60BY%2CDSE~0~AGNISYSL%60BY%2CDSE~0~AGRANINS%60BY%2CDSE~2~AIBL1STIMF%60BY%2CDSE~79~AIBLPBOND%60BY%2CDSE~0~AIL%60BY%2CDSE~0~AL-HAJTEX%60BY%2CDSE~0~ALARABANK%60BY%2CDSE~0~ALIF%60BY%2CDSE~0~ALLTEX%60BY%2CDSE~0~AMANFEED%60BY%2CDSE~0~AMBEEPHA%60BY%2CDSE~0~AMCL(PRAN)%60BY%2CDSE~0~AMPL%60BY%2CDSE~0~ANLIMAYARN%60BY%2CDSE~0~ANWARGALV%60BY%2CDSE~0~AOL%60BY%2CDSE~0~AOPLC%60BY%2CDSE~0~APEXFOODS%60BY%2CDSE~0~APEXFOOT%60BY%2CDSE~0~APEXSPINN%60BY%2CDSE~0~APEXTANRY%60BY%2CDSE~0~APEXWEAV%60BY%2CDSE~0~APOLOISPAT%60BY%2CDSE~79~APSCLBOND%60BY%2CDSE~0~ARAMITCEM%60BY%2CDSE~0~ARAMIT%60BY%2CDSE~0~ARGONDENIM%60BY%2CDSE~0~ASIAINS%60BY%2CDSE~0~ASIAPACINS%60BY%2CDSE~0~ASIATICLAB%60BY%2CDSE~0~ATLASBANG%60BY%2CDSE~0~AZIZPIPES%60BY%2CDSE~0~BANGAS%60BY%2CDSE~79~BANKASI1PB%60BY%2CDSE~0~BANKASIA%60BY%2CDSE~0~BARKAPOWER%60BY%2CDSE~0~BATASHOE%60BY%2CDSE~0~BATBC%60BY%2CDSE~0~BAYLEASING%60BY%2CDSE~79~BBL2NDSB%60BY%2CDSE~0~BBSCABLES%60BY%2CDSE~0~BBS%60BY%2CDSE~0~BDAUTOCA%60BY%2CDSE~0~BDCOM%60BY%2CDSE~0~BDFINANCE%60BY%2CDSE~0~BDLAMPS%60BY%2CDSE~0~BDPAINTS%60BY%2CDSE~0~BDSERVICE%60BY%2CDSE~0~BDTHAIFOOD%60BY%2CDSE~0~BDTHAI%60BY%2CDSE~0~BDWELDING%60BY%2CDSE~0~BEACHHATCH%60BY%2CDSE~0~BEACONPHAR%60BY%2CDSE~0~BENGALBISC%60BY%2CDSE~0~BENGALWTL%60BY%2CDSE~0~BERGERPBL%60BY%2CDSE~0~BESTHLDNG%60BY%2CDSE~79~BEXGSUKUK%60BY%2CDSE~0~BEXIMCO%60BY%2CDSE~0~BGIC%60BY%2CDSE~0~BIFC%60BY%2CDSE~0~BNICL%60BY%2CDSE~0~BPML%60BY%2CDSE~0~BPPL%60BY%2CDSE~0~BRACBANK%60BY%2CDSE~0~BSCPLC%60BY%2CDSE~0~BSC%60BY%2CDSE~0~BSRMLTD%60BY%2CDSE~0~BSRMSTEEL%60BY%2CDSE~0~BXPHARMA%60BY%2CDSE~2~CAPITECGBF%60BY%2CDSE~2~CAPMBDBLMF%60BY%2CDSE~2~CAPMIBBLMF%60BY%2CDSE~79~CBLPBOND%60BY%2CDSE~0~CENTRALINS%60BY%2CDSE~0~CENTRALPHL%60BY%2CDSE~0~CITYBANK%60BY%2CDSE~0~CITYGENINS%60BY%2CDSE~0~CLICL%60BY%2CDSE~0~CNATEX%60BY%2CDSE~0~CONFIDCEM%60BY%2CDSE~0~CONTININS%60BY&AE=1&AS=0",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:23.269Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=0&UE=DSE&H=1&M=1&RT=52&S=DSE~0~COPPERTECH%60BY%2CDSE~0~CRAFTSMAN%60BY%2CDSE~0~CROWNCEMNT%60BY%2CDSE~0~CRYSTALINS%60BY%2CDSE~0~CVOPRL%60BY%2CDSE~0~DACCADYE%60BY%2CDSE~0~DAFODILCOM%60BY%2CDSE~2~DBH1STMF%60BY%2CDSE~0~DBH%60BY%2CDSE~79~DBLPBOND%60BY%2CDSE~112~DEBARACEM%60BY%2CDSE~112~DEBBDLUGG%60BY%2CDSE~112~DEBBDWELD%60BY%2CDSE~112~DEBBDZIPP%60BY%2CDSE~112~DEBBXDENIM%60BY%2CDSE~112~DEBBXFISH%60BY%2CDSE~112~DEBBXKNI%60BY%2CDSE~112~DEBBXTEX%60BY%2CDSE~0~DELTALIFE%60BY%2CDSE~0~DELTASPINN%60BY%2CDSE~0~DESCO%60BY%2CDSE~0~DESHBANDHU%60BY%2CDSE~0~DGIC%60BY%2CDSE~0~DHAKABANK%60BY%2CDSE~0~DHAKAINS%60BY%2CDSE~0~DOMINAGE%60BY%2CDSE~0~DOREENPWR%60BY%2CDSE~0~DSHGARME%60BY%2CDSE~0~DSSL%60BY%2CDSE~0~DULAMIACOT%60BY%2CDSE~0~DUTCHBANGL%60BY%2CDSE~0~EASTERNINS%60BY%2CDSE~0~EASTLAND%60BY%2CDSE~0~EASTRNLUB%60BY%2CDSE~2~EBL1STMF%60BY%2CDSE~2~EBLNRBMF%60BY%2CDSE~0~EBL%60BY%2CDSE~0~ECABLES%60BY%2CDSE~0~EGEN%60BY%2CDSE~0~EHL%60BY%2CDSE~0~EIL%60BY%2CDSE~0~EMERALDOIL%60BY%2CDSE~0~ENVOYTEX%60BY%2CDSE~0~EPGL%60BY%2CDSE~0~ESQUIRENIT%60BY%2CDSE~0~ETL%60BY%2CDSE~2~EXIM1STMF%60BY%2CDSE~0~EXIMBANK%60BY%2CDSE~0~FAMILYTEX%60BY%2CDSE~0~FARCHEM%60BY%2CDSE~0~FAREASTFIN%60BY%2CDSE~0~FAREASTLIF%60BY%2CDSE~0~FASFIN%60BY%2CDSE~2~FBFIF%60BY%2CDSE~0~FEDERALINS%60BY%2CDSE~0~FEKDIL%60BY%2CDSE~0~FINEFOODS%60BY%2CDSE~0~FIRSTFIN%60BY%2CDSE~0~FIRSTSBANK%60BY%2CDSE~0~FORTUNE%60BY%2CDSE~0~FUWANGCER%60BY%2CDSE~0~FUWANGFOOD%60BY%2CDSE~0~GBBPOWER%60BY%2CDSE~0~GEMINISEA%60BY%2CDSE~0~GENEXIL%60BY%2CDSE~0~GENNEXT%60BY%2CDSE~0~GHAIL%60BY%2CDSE~0~GHCL%60BY%2CDSE~0~GIB%60BY%2CDSE~2~GLDNJMF%60BY%2CDSE~0~GLOBALINS%60BY%2CDSE~0~GOLDENSON%60BY%2CDSE~0~GPHISPAT%60BY%2CDSE~0~GP%60BY%2CDSE~0~GQBALLPEN%60BY%2CDSE~2~GRAMEENS2%60BY%2CDSE~2~GREENDELMF%60BY%2CDSE~0~GREENDELT%60BY%2CDSE~0~GSPFINANCE%60BY%2CDSE~0~HAKKANIPUL%60BY%2CDSE~0~HAMI%60BY%2CDSE~0~HEIDELBCEM%60BY%2CDSE~0~HFL%60BY%2CDSE~0~HIMADRI%60BY%2CDSE~0~HRTEX%60BY%2CDSE~0~HWAWELLTEX%60BY%2CDSE~79~IBBL2PBOND%60BY%2CDSE~79~IBBLPBOND%60BY%2CDSE~79~IBBT2BOND3%60BY%2CDSE~0~IBNSINA%60BY%2CDSE~0~IBP%60BY%2CDSE~2~ICB3RDNRB%60BY%2CDSE~2~ICBAGRANI1%60BY%2CDSE~2~ICBAMCL2ND%60BY%2CDSE~2~ICBEPMF1S1%60BY%2CDSE~0~ICBIBANK%60BY%2CDSE~2~ICBSONALI1%60BY%2CDSE~0~ICB%60BY%2CDSE~0~ICICL%60BY%2CDSE~0~IDLC%60BY&AE=1&AS=0",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:23.269Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=0&UE=DSE&H=1&M=1&RT=52&S=DSE~0~IFADAUTOS%60BY%2CDSE~2~IFIC1STMF%60BY%2CDSE~79~IFICSBOND2%60BY%2CDSE~79~IFICSBOND3%60BY%2CDSE~0~IFIC%60BY%2CDSE~2~IFILISLMF1%60BY%2CDSE~0~ILFSL%60BY%2CDSE~0~INDEXAGRO%60BY%2CDSE~0~INTECH%60BY%2CDSE~0~INTRACO%60BY%2CDSE~0~IPDC%60BY%2CDSE~0~ISLAMIBANK%60BY%2CDSE~0~ISLAMICFIN%60BY%2CDSE~0~ISLAMIINS%60BY%2CDSE~0~ISNLTD%60BY%2CDSE~0~ITC%60BY%2CDSE~0~JAMUNABANK%60BY%2CDSE~0~JAMUNAOIL%60BY%2CDSE~0~JANATAINS%60BY%2CDSE~0~JHRML%60BY%2CDSE~0~JMISMDL%60BY%2CDSE~0~JUTESPINN%60BY%2CDSE~0~KARNAPHULI%60BY%2CDSE~0~KAY%26QUE%60BY%2CDSE~0~KBPPWBIL%60BY%2CDSE~0~KBSEED%60BY%2CDSE~0~KDSALTD%60BY%2CDSE~0~KEYACOSMET%60BY%2CDSE~0~KFL%60BY%2CDSE~0~KOHINOOR%60BY%2CDSE~0~KPCL%60BY%2CDSE~0~KPPL%60BY%2CDSE~0~KTL%60BY%2CDSE~0~LANKABAFIN%60BY%2CDSE~0~LBS%60BY%2CDSE~0~LEGACYFOOT%60BY%2CDSE~0~LHB%60BY%2CDSE~0~LIBRAINFU%60BY%2CDSE~0~LINDEBD%60BY%2CDSE~0~LOVELLO%60BY%2CDSE~0~LRBDL%60BY%2CDSE~2~LRGLOBMF1%60BY%2CDSE~0~MAGURAPLEX%60BY%2CDSE~0~MAKSONSPIN%60BY%2CDSE~0~MALEKSPIN%60BY%2CDSE~0~MAMUNAGRO%60BY%2CDSE~0~MARICO%60BY%2CDSE~0~MASTERAGRO%60BY%2CDSE~0~MATINSPINN%60BY%2CDSE~2~MBL1STMF%60BY%2CDSE~79~MBPLCPBOND%60BY%2CDSE~0~MEGCONMILK%60BY%2CDSE~0~MEGHNACEM%60BY%2CDSE~0~MEGHNAINS%60BY%2CDSE~0~MEGHNALIFE%60BY%2CDSE~0~MEGHNAPET%60BY%2CDSE~0~MERCANBANK%60BY%2CDSE~0~MERCINS%60BY%2CDSE~0~METROSPIN%60BY%2CDSE~0~MHSML%60BY%2CDSE~0~MIDASFIN%60BY%2CDSE~0~MIDLANDBNK%60BY%2CDSE~0~MIRACLEIND%60BY%2CDSE~0~MIRAKHTER%60BY%2CDSE~0~MITHUNKNIT%60BY%2CDSE~0~MJLBD%60BY%2CDSE~0~MKFOOTWEAR%60BY%2CDSE~0~MLDYEING%60BY%2CDSE~0~MONNOAGML%60BY%2CDSE~0~MONNOCERA%60BY%2CDSE~0~MONNOFABR%60BY%2CDSE~0~MONOSPOOL%60BY%2CDSE~0~MOSTFAMETL%60BY%2CDSE~0~MPETROLEUM%60BY%2CDSE~79~MTBPBOND%60BY%2CDSE~0~MTB%60BY%2CDSE~0~NAHEEACP%60BY%2CDSE~0~NATLIFEINS%60BY%2CDSE~0~NAVANACNG%60BY%2CDSE~0~NAVANAPHAR%60BY%2CDSE~0~NBL%60BY%2CDSE~0~NCCBANK%60BY%2CDSE~2~NCCBLMF1%60BY%2CDSE~0~NEWLINE%60BY%2CDSE~0~NFML%60BY%2CDSE~0~NHFIL%60BY%2CDSE~0~NIALCO%60BY%2CDSE~0~NITOLINS%60BY%2CDSE~0~NORTHERN%60BY%2CDSE~0~NORTHRNINS%60BY%2CDSE~0~NPOLYMER%60BY%2CDSE~0~NRBBANK%60BY%2CDSE~0~NRBCBANK%60BY%2CDSE~0~NTC%60BY%2CDSE~0~NTLTUBES%60BY%2CDSE~0~NURANI%60BY%2CDSE~0~OAL%60BY%2CDSE~0~OIMEX%60BY%2CDSE~0~OLYMPIC%60BY%2CDSE~0~ONEBANKPLC%60BY&AE=1&AS=0",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:23.269Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=0&UE=DSE&H=1&M=1&RT=52&S=DSE~0~ORIONINFU%60BY%2CDSE~0~ORIONPHARM%60BY%2CDSE~0~ORYZAAGRO%60BY%2CDSE~0~PADMALIFE%60BY%2CDSE~0~PADMAOIL%60BY%2CDSE~79~PALUGB1%60BY%2CDSE~0~PARAMOUNT%60BY%2CDSE~79~PBLPBOND%60BY%2CDSE~0~PDL%60BY%2CDSE~0~PENINSULA%60BY%2CDSE~0~PEOPLESINS%60BY%2CDSE~2~PF1STMF%60BY%2CDSE~0~PHARMAID%60BY%2CDSE~0~PHENIXINS%60BY%2CDSE~0~PHOENIXFIN%60BY%2CDSE~2~PHPMF1%60BY%2CDSE~0~PIONEERINS%60BY%2CDSE~0~PLFSL%60BY%2CDSE~2~POPULAR1MF%60BY%2CDSE~0~POPULARLIF%60BY%2CDSE~0~POWERGRID%60BY%2CDSE~0~PRAGATIINS%60BY%2CDSE~0~PRAGATILIF%60BY%2CDSE~79~PREBPBOND%60BY%2CDSE~0~PREMIERBAN%60BY%2CDSE~0~PREMIERCEM%60BY%2CDSE~0~PREMIERLEA%60BY%2CDSE~2~PRIME1ICBA%60BY%2CDSE~0~PRIMEBANK%60BY%2CDSE~0~PRIMEFIN%60BY%2CDSE~0~PRIMEINSUR%60BY%2CDSE~0~PRIMELIFE%60BY%2CDSE~0~PRIMETEX%60BY%2CDSE~0~PROGRESLIF%60BY%2CDSE~0~PROVATIINS%60BY%2CDSE~0~PTL%60BY%2CDSE~0~PUBALIBANK%60BY%2CDSE~0~PURABIGEN%60BY%2CDSE~0~QUASEMIND%60BY%2CDSE~0~QUEENSOUTH%60BY%2CDSE~0~RAHIMAFOOD%60BY%2CDSE~0~RAHIMTEXT%60BY%2CDSE~0~RAKCERAMIC%60BY%2CDSE~0~RANFOUNDRY%60BY%2CDSE~79~RAPLCSBOND%60BY%2CDSE~0~RDFOOD%60BY%2CDSE~0~RECKITTBEN%60BY%2CDSE~0~REGENTTEX%60BY%2CDSE~2~RELIANCE1%60BY%2CDSE~0~RELIANCINS%60BY%2CDSE~0~RENATAPS%60BY%2CDSE~0~RENATA%60BY%2CDSE~0~RENWICKJA%60BY%2CDSE~0~REPUBLIC%60BY%2CDSE~0~RINGSHINE%60BY%2CDSE~0~ROBI%60BY%2CDSE~0~RSRMSTEEL%60BY%2CDSE~0~RUNNERAUTO%60BY%2CDSE~0~RUPALIBANK%60BY%2CDSE~0~RUPALIINS%60BY%2CDSE~0~RUPALILIFE%60BY%2CDSE~0~SADHESIVE%60BY%2CDSE~0~SAFKOSPINN%60BY%2CDSE~0~SAIFPOWER%60BY%2CDSE~0~SAIHAMCOT%60BY%2CDSE~0~SAIHAMTEX%60BY%2CDSE~0~SALAMCRST%60BY%2CDSE~0~SALVO%60BY%2CDSE~0~SAMATALETH%60BY%2CDSE~0~SAMORITA%60BY%2CDSE~0~SANDHANINS%60BY%2CDSE~0~SAPORTL%60BY%2CDSE~0~SAVAREFR%60BY%2CDSE~0~SBACBANK%60BY%2CDSE~0~SEAPEARL%60BY%2CDSE~79~SEB1PBOND%60BY%2CDSE~2~SEMLFBSLGF%60BY%2CDSE~2~SEMLIBBLSF%60BY%2CDSE~2~SEMLLECMF%60BY%2CDSE~0~SHAHJABANK%60BY%2CDSE~0~SHARPIND%60BY%2CDSE~0~SHASHADNIM%60BY%2CDSE~0~SHEPHERD%60BY%2CDSE~0~SHURWID%60BY%2CDSE~0~SHYAMPSUG%60BY%2CDSE~0~SIBL%60BY%2CDSE~0~SICL%60BY%2CDSE~0~SILCOPHL%60BY%2CDSE~0~SILVAPHL%60BY%2CDSE~0~SIMTEX%60BY%2CDSE~0~SINGERBD%60BY%2CDSE~0~SINOBANGLA%60BY%2CDSE~0~SIPLC%60BY%2CDSE~79~SJIBLPBOND%60BY%2CDSE~0~SKTRIMS%60BY%2CDSE~0~SONALIANSH%60BY%2CDSE~0~SONALILIFE%60BY%2CDSE~0~SONALIPAPR%60BY%2CDSE~0~SONARBAINS%60BY%2CDSE~0~SONARGAON%60BY&AE=1&AS=0",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:23.270Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=0&UE=DSE&H=1&M=1&RT=52&S=DSE~0~SOUTHEASTB%60BY%2CDSE~0~SPCERAMICS%60BY%2CDSE~0~SPCL%60BY%2CDSE~0~SQUARETEXT%60BY%2CDSE~0~SQURPHARMA%60BY%2CDSE~0~SSSTEEL%60BY%2CDSE~0~STANCERAM%60BY%2CDSE~0~STANDARINS%60BY%2CDSE~0~STANDBANKL%60BY%2CDSE~0~STYLECRAFT%60BY%2CDSE~0~SUMITPOWER%60BY%2CDSE~0~SUNLIFEINS%60BY%2CDSE~0~TAKAFULINS%60BY%2CDSE~0~TALLUSPIN%60BY%2CDSE~0~TAMIJTEX%60BY%2CDSE~0~TECHNODRUG%60BY%2CDSE~0~TILIL%60BY%2CDSE~0~TITASGAS%60BY%2CDSE~0~TOSRIFA%60BY%2CDSE~0~TR1GSTGZCB%60BY%2CDSE~0~TR2GSTGZCB%60BY%2CDSE~2~TRUSTB1MF%60BY%2CDSE~0~TRUSTBANK%60BY%2CDSE~0~TUNGHAI%60BY%2CDSE~79~UCB2PBOND%60BY%2CDSE~0~UCB%60BY%2CDSE~0~UNILEVERCL%60BY%2CDSE~0~UNIONBANK%60BY%2CDSE~0~UNIONCAP%60BY%2CDSE~0~UNIONINS%60BY%2CDSE~0~UNIQUEHRL%60BY%2CDSE~0~UNITEDFIN%60BY%2CDSE~0~UNITEDINS%60BY%2CDSE~0~UPGDCL%60BY%2CDSE~0~USMANIAGL%60BY%2CDSE~0~UTTARABANK%60BY%2CDSE~0~UTTARAFIN%60BY%2CDSE~2~VAMLBDMF1%60BY%2CDSE~2~VAMLRBBF%60BY%2CDSE~0~VFSTDL%60BY%2CDSE~0~WALTONHIL%60BY%2CDSE~0~WATACHEM%60BY%2CDSE~0~WEBCOATS%60BY%2CDSE~0~WMSHIPYARD%60BY%2CDSE~0~WONDERTOYS%60BY%2CDSE~0~YPL%60BY%2CDSE~0~YUSUFLOUR%60BY%2CDSE~0~ZAHEENSPIN%60BY%2CDSE~0~ZAHINTEX%60BY%2CDSE~0~ZEALBANGLA%60BY&AE=1&AS=0",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:23.270Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/chart?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=37&E=DSE&S=DSEX&AE=1&CM=2&NOD=1&CT=3",
+      "category": "OTHER",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:28.707Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=0&UE=DSE&H=1&M=1&RT=52&S=DSE~2~1JANATAMF%60PB&AE=1&AS=0",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:53.310Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=0&UE=DSE&H=1&M=1&RT=52&S=DSE~2~1JANATAMF%60PB&AE=1&AS=0",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:54.312Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=306&SRC=DSE&MOD=WL%3A10867%2CSRC%3A8895",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:56.501Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=303&SRC=DSE&AS=1&VRS=10867",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:56.501Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=306&SRC=DSE&MOD=WL%3A10867%2CSRC%3A8895",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:56.501Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://easytrade.shantasecurities.com/mob/price?UID=131883&SID=BD584E3E-DB9B-9ECF-E040-007F01005D49&L=EN&UNC=1&UE=DSE&H=1&M=1&RT=303&SRC=DSE&AS=1&VRS=10867",
+      "category": "MARKET",
+      "headers": {
+        "authorization": null,
+        "content-type": "application/json; charset=utf-8",
+        "origin": null,
+        "referer": "https://easytrade.shantasecurities.com/"
+      },
+      "body": null,
+      "timestamp": "2026-06-24T04:38:56.501Z"
+    }
+  ]
+}

@@ -6,15 +6,16 @@ import { authenticatedApiCall } from '../utils/apiWrapper';
 import ora from 'ora';
 
 export async function portfolioCommand(options: { json?: boolean; toon?: boolean; markdown?: boolean }): Promise<void> {
-  const spinner = ora('Fetching portfolio...').start();
+  const spinner = options.json ? undefined : ora('Fetching portfolio...').start();
   try {
     const portfolioService = new PortfolioService();
     
-    const portfolio = await authenticatedApiCall((token: string) => 
-      portfolioService.getPortfolio(token)
+    const portfolio = await authenticatedApiCall(
+      (token: string) => portfolioService.getPortfolio(token),
+      spinner
     );
 
-    spinner.stop();
+    spinner?.stop();
 
     if (options.json) {
       console.log(JSON.stringify(portfolio, null, 2));

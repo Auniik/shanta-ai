@@ -80,7 +80,7 @@ export class ConfigManager {
     return true;
   }
 
-  public async ensureAuthenticated(forceRefresh: boolean = false): Promise<string> {
+  public async ensureAuthenticated(forceRefresh: boolean = false, spinner?: any): Promise<string> {
     if (!forceRefresh && this.isAuthenticated()) {
       const token = this.get('apiKey');
       if (token && typeof token === 'string') {
@@ -91,7 +91,32 @@ export class ConfigManager {
     // Try auto-refresh with saved credentials
     const config = this.load();
     const username = config.userId;
-    const password = process.env.SHANTA_AI_PASSWORD;
+    let password = process.env.SHANTA_AI_PASSWORD;
+
+    // If we have username but no password, prompt for it
+    if (username && !password) {
+      // Stop spinner if provided to allow interactive input
+      if (spinner) {
+        spinner.stop();
+      }
+      
+      const readline = await import('readline');
+      const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+      });
+      
+      password = await new Promise<string>((resolve) => {
+        rl.question(`Enter password for ${username}: `, (answer) => {
+          rl.close();
+          resolve(answer);
+        });
+      });
+
+      if (!password) {
+        throw new Error('Password is required for re-authentication.');
+      }
+    }
 
     if (!username || !password) {
       throw new Error('Not authenticated. Please run "shanta-ai auth" first or set SHANTA_AI_PASSWORD environment variable.');
@@ -114,6 +139,11 @@ export class ConfigManager {
       }
       if (expiresAt) {
         this.set('expiresAt', expiresAt);
+      }
+      
+      // Restart spinner if it was stopped
+      if (spinner) {
+        spinner.start();
       }
       
       return result.accessToken;
