@@ -22,7 +22,9 @@ const MSG = {
 
 const ORDER_SIDE = { BUY: '1', SELL: '2' } as const;
 const ORDER_TYPE = { MARKET: '1', LIMIT: '2' } as const;
-const APP_VERSION = 'DFNUAMOB_XX_SHANTA_1.010.06.0+9dbc1750'; // must match full Ember APP.version
+// Must match the deployed Ember app's APP.version. Overridable via env so it can
+// be bumped when Shanta ships a new app build without editing source.
+const APP_VERSION = process.env.SHANTA_APP_VERSION || 'DFNUAMOB_XX_SHANTA_1.010.06.0+9dbc1750';
 const OMS_URL = 'wss://easytrade.shantasecurities.com/streaming-api';
 const CHANNEL_ID = 32; // iPhone mobile channel (iPhoneChannelId)
 const CRED_FILE = path.join(os.homedir(), '.shanta-ai', 'easytrade.json');
@@ -74,6 +76,7 @@ export interface OrderRequest {
   price: number;
   tif?: string;
   instruTyp?: string;
+  marketCode?: string;
 }
 
 export interface CancelRequest {
@@ -304,40 +307,71 @@ export class EasyTradeService {
     return this.request(MSG.HOLDINGS, { tradingAccId });
   }
 
+  // OMS uses "XCHG" for the Chittagong exchange; the CLI shows it as "CSE".
+  private omsExg(exg: string): string {
+    return exg === 'CSE' ? 'XCHG' : exg;
+  }
+
+  // DSE symbols are board-qualified in the OMS, e.g. "FUWANGCER`PB".
+  // Regular equities default to the Public Board (PB) when no board is given.
+  private qualifySymbol(symbol: string): string {
+    return symbol.includes('`') ? symbol : `${symbol}\`PB`;
+  }
+
   async placeOrder(req: OrderRequest): Promise<any> {
     const dat = {
-      tradingAccId: req.tradingAccId,
-      symbol: req.symbol,
-      exg: req.exg,
+      // The OMS order-insert does a typed account lookup, so this MUST be the
+      // numeric securities-account id (secAccNum), not a quoted string — a string
+      // fails with "Error when loading TradingAccount" and rejects the order.
+      tradingAccId: Number(req.tradingAccId),
+      symbol: this.qualifySymbol(req.symbol),
+      exg: this.omsExg(req.exg),
       ordTyp: ORDER_TYPE[req.type],
       ordSide: ORDER_SIDE[req.side],
       ordQty: req.qty,
-      tif: req.tif ?? 'DAY',
+      tif: req.tif ?? '0', // "0" = Day (numeric TIF per server tifRuleSet); "DAY" is rejected
       disQty: 0,
       minQty: 0,
       price: req.price,
       dayOrd: 0,
-      instruTyp: req.instruTyp ?? 'EQ',
+      instruTyp: req.instruTyp ?? '0', // "0" = Equity (numeric instrument type)
       expDte: '',
       bkId: '',
-      marketCode: 'ALL',
+      // Shanta runs with isSubMktOrder=true, so the real app sends the symbol's
+      // sub-market id here (NOT "ALL"). DSE sub-markets are "1".."4" ("1" = primary
+      // Public board); CSE/XCHG are "N/I/F/B" ("N" = Normal). Defaults cover the
+      // normal market on each exchange; pass marketCode for other sub-markets.
+      marketCode: req.marketCode ?? (this.omsExg(req.exg) === 'XCHG' ? 'N' : '1'),
     };
-    return this.request(MSG.NEW_ORDER, dat);
+    if (process.env.SHANTA_TRADE_DEBUG) {
+      console.error('[NEW_ORDER →]', JSON.stringify(dat));
+    }
+    if (process.env.SHANTA_DRY_RUN) {
+      return { DRY_RUN: true, HED: { msgTyp: MSG.NEW_ORDER }, DAT: dat };
+    }
+    const resp = await this.request(MSG.NEW_ORDER, dat);
+    if (process.env.SHANTA_TRADE_DEBUG) {
+      console.error('[NEW_ORDER ←]', JSON.stringify(resp));
+    }
+    return resp;
   }
 
   async cancelOrder(req: CancelRequest): Promise<any> {
     const dat = {
-      tradingAccId: req.tradingAccId,
-      symbol: req.symbol,
-      exg: req.exg,
+      tradingAccId: Number(req.tradingAccId),
+      symbol: this.qualifySymbol(req.symbol),
+      exg: this.omsExg(req.exg),
       ordTyp: req.ordTyp ?? '2',
       ordSide: req.ordSide ?? '1',
-      tif: req.tif ?? 'DAY',
+      tif: req.tif ?? '0', // numeric TIF, matches placeOrder
       bkId: '',
       ordNo: req.ordNo,
       orgClOrdId: req.orgClOrdId,
       clOrdId: req.clOrdId,
     };
+    if (process.env.SHANTA_TRADE_DEBUG) {
+      console.error('[CANCEL_ORDER →]', JSON.stringify(dat));
+    }
     return this.request(MSG.CANCEL_ORDER, dat);
   }
 

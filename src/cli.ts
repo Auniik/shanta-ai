@@ -130,6 +130,9 @@ trade
   .option('-p, --price <price>', 'Limit price per share in BDT', '0')
   .option('--market', 'Place a market order instead of limit')
   .option('--account <accId>', 'Trading account ID (default: DSE account)')
+  .option('--board <board>', 'Board code (default: PB). Or write SYMBOL`BOARD, e.g. FUWANGCER`BL')
+  .option('--submarket <code>', 'Sub-market code (default: DSE=1, CSE=N). For non-normal markets')
+  .option('--instrument <type>', 'Instrument type: equity (default), fund, option, trust, rights, bond, etf')
   .option('--json', 'Output order response as JSON')
   .action(async (symbol, options) => {
     await tradeBuyCommand(symbol, options);
@@ -146,6 +149,9 @@ trade
   .option('-p, --price <price>', 'Limit price per share in BDT', '0')
   .option('--market', 'Place a market order instead of limit')
   .option('--account <accId>', 'Trading account ID (default: DSE account)')
+  .option('--board <board>', 'Board code (default: auto from holdings). Or write SYMBOL`BOARD')
+  .option('--submarket <code>', 'Sub-market code (default: DSE=1, CSE=N). For non-normal markets')
+  .option('--instrument <type>', 'Instrument type: equity (default), fund, option, trust, rights, bond, etf')
   .option('--json', 'Output order response as JSON')
   .action(async (symbol, options) => {
     await tradeSellCommand(symbol, options);

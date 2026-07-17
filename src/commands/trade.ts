@@ -28,6 +28,51 @@ function formatCurrency(n: number | string | undefined): string {
   return num.toLocaleString('en-BD', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
+// ── Symbol / board / instrument helpers (order generalization) ───────────────────
+// Instrument-type codes decoded from the EasyTrade app bundle (instrumentType_N).
+const INSTRUMENT_CODES: Record<string, string> = {
+  equity: '0', stock: '0', share: '0', shares: '0',
+  fund: '2', mutualfund: '2', mf: '2',
+  option: '10', options: '10',
+  trust: '65',
+  right: '66', rights: '66',
+  bond: '75',
+  etf: '86', etfs: '86',
+};
+
+// undefined → let the service default to '0' (Equity).
+function resolveInstrument(name?: string): string | undefined {
+  if (!name) return undefined;
+  const code = INSTRUMENT_CODES[name.toLowerCase().replace(/[^a-z]/g, '')];
+  if (!code) throw new Error(`Unknown instrument "${name}". Valid: equity, fund, option, trust, rights, bond, etf`);
+  return code;
+}
+
+// Accepts "SYMBOL", "SYMBOL`BOARD" or "SYMBOL:BOARD", plus an optional --board override.
+function splitSymbolBoard(input: string, boardOpt?: string): { ticker: string; board?: string } {
+  const s = input.toUpperCase().trim();
+  const m = s.match(/^([^`:]+)[`:](.+)$/);
+  if (m) return { ticker: m[1], board: (boardOpt ?? m[2]).toUpperCase() };
+  return { ticker: s, board: boardOpt?.toUpperCase() };
+}
+
+// Board-qualified symbol for the OMS; left bare when no board (service defaults to `PB).
+function buildOmsSymbol(ticker: string, board?: string): string {
+  return board ? `${ticker}\`${board}` : ticker;
+}
+
+// For sells, when no board is given, reuse the exact board the position is held on
+// (holdings symbols are board-qualified, e.g. "CITYBANK`PB") so any board works.
+async function resolveSellSymbol(
+  svc: EasyTradeService, tradingAccId: string, ticker: string, board?: string
+): Promise<string> {
+  if (board) return buildOmsSymbol(ticker, board);
+  const resp = await svc.getHoldings(tradingAccId);
+  const holdings = resp?.DAT?.holdings ?? [];
+  const held = holdings.find((h: any) => cleanSymbol(h.symbol ?? '') === ticker);
+  return held?.symbol ?? buildOmsSymbol(ticker, undefined);
+}
+
 // ── trade auth ─────────────────────────────────────────────────────────────────
 export async function tradeAuthCommand(options: { username?: string; password?: string }): Promise<void> {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
@@ -258,7 +303,7 @@ export async function tradeOrdersCommand(options: { json?: boolean }): Promise<v
 // ── trade buy ──────────────────────────────────────────────────────────────────
 export async function tradeBuyCommand(
   symbol: string,
-  options: { qty: string; price: string; account?: string; market?: boolean; json?: boolean }
+  options: { qty: string; price: string; account?: string; market?: boolean; json?: boolean; board?: string; submarket?: string; instrument?: string }
 ): Promise<void> {
   const qty = parseInt(options.qty, 10);
   const price = parseFloat(options.price);
@@ -266,25 +311,29 @@ export async function tradeBuyCommand(
   if (!qty || qty <= 0) { console.error(chalk.red('Invalid quantity')); process.exit(1); }
   if (!options.market && (!price || price <= 0)) { console.error(chalk.red('Invalid price')); process.exit(1); }
 
-  const spinner = ora(`Placing BUY order: ${qty} × ${symbol.toUpperCase()} @ ${price}...`).start();
+  const { ticker, board } = splitSymbolBoard(symbol, options.board);
+  const spinner = ora(`Placing BUY order: ${qty} × ${ticker} @ ${price}...`).start();
   try {
+    const instruTyp = resolveInstrument(options.instrument);
     const svc = await getConnectedService();
     const session = svc.getSession()!;
 
     const acc = options.account
       ? session.tradingAccounts.find(a => a.tradingAccId === options.account)
-      : session.tradingAccounts[0];
+      : session.tradingAccounts.find(a => a.exchg === 'DSE') ?? session.tradingAccounts[0];
 
     if (!acc) throw new Error(`Trading account not found: ${options.account ?? '(default)'}`);
 
     const resp = await svc.placeOrder({
       tradingAccId: acc.tradingAccId,
-      symbol: symbol.toUpperCase(),
+      symbol: buildOmsSymbol(ticker, board),
       exg: acc.exchg,
       side: 'BUY',
       type: options.market ? 'MARKET' : 'LIMIT',
       qty,
       price: options.market ? 0 : price,
+      marketCode: options.submarket,
+      instruTyp,
     });
 
     svc.logout();
@@ -309,7 +358,7 @@ export async function tradeBuyCommand(
 // ── trade sell ─────────────────────────────────────────────────────────────────
 export async function tradeSellCommand(
   symbol: string,
-  options: { qty: string; price: string; account?: string; market?: boolean; json?: boolean }
+  options: { qty: string; price: string; account?: string; market?: boolean; json?: boolean; board?: string; submarket?: string; instrument?: string }
 ): Promise<void> {
   const qty = parseInt(options.qty, 10);
   const price = parseFloat(options.price);
@@ -317,25 +366,30 @@ export async function tradeSellCommand(
   if (!qty || qty <= 0) { console.error(chalk.red('Invalid quantity')); process.exit(1); }
   if (!options.market && (!price || price <= 0)) { console.error(chalk.red('Invalid price')); process.exit(1); }
 
-  const spinner = ora(`Placing SELL order: ${qty} × ${symbol.toUpperCase()} @ ${price}...`).start();
+  const { ticker, board } = splitSymbolBoard(symbol, options.board);
+  const spinner = ora(`Placing SELL order: ${qty} × ${ticker} @ ${price}...`).start();
   try {
+    const instruTyp = resolveInstrument(options.instrument);
     const svc = await getConnectedService();
     const session = svc.getSession()!;
 
     const acc = options.account
       ? session.tradingAccounts.find(a => a.tradingAccId === options.account)
-      : session.tradingAccounts[0];
+      : session.tradingAccounts.find(a => a.exchg === 'DSE') ?? session.tradingAccounts[0];
 
     if (!acc) throw new Error(`Trading account not found: ${options.account ?? '(default)'}`);
 
+    const omsSymbol = await resolveSellSymbol(svc, acc.tradingAccId, ticker, board);
     const resp = await svc.placeOrder({
       tradingAccId: acc.tradingAccId,
-      symbol: symbol.toUpperCase(),
+      symbol: omsSymbol,
       exg: acc.exchg,
       side: 'SELL',
       type: options.market ? 'MARKET' : 'LIMIT',
       qty,
       price: options.market ? 0 : price,
+      marketCode: options.submarket,
+      instruTyp,
     });
 
     svc.logout();
@@ -369,7 +423,7 @@ export async function tradeCancelCommand(
     // First fetch order list to get full order details
     const acc = options.account
       ? session.tradingAccounts.find(a => a.tradingAccId === options.account)
-      : session.tradingAccounts[0];
+      : session.tradingAccounts.find(a => a.exchg === 'DSE') ?? session.tradingAccounts[0];
 
     if (!acc) throw new Error('No trading account found');
 
